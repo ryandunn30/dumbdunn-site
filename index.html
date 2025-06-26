@@ -8,6 +8,7 @@
     body {
       margin: 0;
       padding: 0;
+      padding-top: 80px; /* Add space for fixed header */
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(45deg, white 30%, #663399 100%);
       color: #333;
@@ -15,7 +16,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      min-height: 100vh;
       text-align: center;
     }
 
@@ -23,18 +24,34 @@
     .nav-header {
       position: fixed;
       top: 0;
+      left: 0;
       right: 0;
       padding: 1rem 2rem;
       display: flex;
-      gap: 2rem;
+      justify-content: space-between;
       align-items: center;
       z-index: 1000;
+      background-color: #000;
+      height: 60px;
+    }
+
+    .nav-left {
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
     }
 
     .nav-btn {
       background: none;
       border: none;
-      color: #333;
+      color: white;
       font-size: 1rem;
       font-weight: 500;
       cursor: pointer;
@@ -44,13 +61,18 @@
     }
 
     .nav-btn:hover {
-      color: #663399;
+      color: #ffd700;
+    }
+
+    .nav-btn.active {
+      color: #ffd700;
+      border-bottom: 2px solid #ffd700;
     }
 
     .contact-btn {
       background: none;
-      border: 2px solid #333;
-      color: #333;
+      border: 2px solid white;
+      color: white;
       font-size: 1rem;
       font-weight: 500;
       cursor: pointer;
@@ -61,8 +83,8 @@
     }
 
     .contact-btn:hover {
-      background-color: #333;
-      color: white;
+      background-color: white;
+      color: #000;
     }
 
     .logo {
@@ -119,10 +141,13 @@
 <body>
   <!-- Navigation Header -->
   <nav class="nav-header">
-    <a href="#home" class="nav-btn">Home</a>
-    <a href="#about" class="nav-btn">About</a>
-    <a href="#services" class="nav-btn">Services</a>
-    <a href="mailto:rdunn@dumbdunn.com" class="contact-btn">CONTACT</a>
+    <div class="nav-left">DUNN TECHNOLOGY</div>
+    <div class="nav-right">
+      <a href="#home" class="nav-btn active">Home</a>
+      <a href="#about" class="nav-btn">About</a>
+      <a href="#services" class="nav-btn">Products</a>
+      <a href="mailto:rdunn@dumbdunn.com" class="contact-btn">CONTACT</a>
+    </div>
   </nav>
 
   <!-- Main Content -->
