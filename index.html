@@ -15,12 +15,53 @@
     }
 
     .main-content {
+      padding-top: 80px; /* Space for fixed header */
+    }
+
+    .content-sections {
+      width: 100%;
+      position: relative;
+      z-index: 3;
+    }
+
+    .content-box {
+      width: 100%;
+      padding: 4rem 2rem;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      padding-top: 80px; /* Space for fixed header */
+    }
+
+    .dark-grey-box {
+      background-color: #333333;
+      color: white;
+    }
+
+    .grey-box {
+      background-color: #666666;
+      color: white;
+    }
+
+    .box-content {
+      max-width: 1200px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .text-content {
+      flex: 1;
+    }
+
+    .image-content {
+      flex: 1;
+    }
+
+    .box-image {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
     }
 
     /* Navigation Header */
@@ -83,15 +124,51 @@
       color: #000;
     }
 
-    .hero-image {
+    .hero-section {
+      position: relative;
       width: 100%;
-      max-width: none;
-      height: auto;
+      height: 100vh;
+      background-image: url('Thommas.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
       margin-top: -80px;
-      margin-bottom: 1.5rem;
-      border-radius: 0;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      display: block;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .hero-content p {
+      font-size: 1.25rem;
+      max-width: 600px;
+      margin: 0.5rem auto 2rem auto;
+      color: white;
     }
 
     /* Mobile adjustments */
@@ -162,10 +239,44 @@
 
   <!-- Main Content -->
   <div class="main-content">
-    <img src="Thommas_logo.jpg" alt="Dunn Technology Logo" class="hero-image" />
-    <h1>DUNN TECHNOLOGY</h1>
-    <p>AIORI</p>
-    <a class="btn" href="mailto:rdunn@dumbdunn.com">Contact Us</a>
+    <!-- Hero Section with Background Image -->
+    <div class="hero-section">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1>DUNN TECHNOLOGY</h1>
+        <p>AIORI</p>
+        <a class="btn" href="mailto:rdunn@dumbdunn.com">Contact Us</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content Sections -->
+  <div class="content-sections">
+    <!-- Dark Grey Box -->
+    <div class="content-box dark-grey-box">
+      <div class="box-content">
+        <div class="text-content">
+          <h2>About Dunn Technology</h2>
+          <p>Content will be added here...</p>
+        </div>
+        <div class="image-content">
+          <img src="placeholder-image.jpg" alt="Placeholder" class="box-image" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Grey Box -->
+    <div class="content-box grey-box">
+      <div class="box-content">
+        <div class="text-content">
+          <h2>Our Services</h2>
+          <p>Content will be added here...</p>
+        </div>
+        <div class="image-content">
+          <img src="placeholder-image.jpg" alt="Placeholder" class="box-image" />
+        </div>
+      </div>
+    </div>
   </div>
 </body>
 </html>
