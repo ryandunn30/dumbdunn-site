@@ -106,9 +106,59 @@
       height: auto;
       border-radius: 8px;
     }
+/* styles for three-column layout */
+    .grey-box .box-content {
+      flex-direction: column;
+    }
+    .section-heading {
+      width: 100%;
+      max-width: 1200px;
+      margin-bottom: 2rem;
+      text-align: left;
+    }
+    .section-heading p {
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+    .section-heading h2 {
+      font-size: 2.5rem;
+    }
+    .three-col-container {
+      display: flex;
+      gap: 2rem;
+      width: 100%;
+      max-width: 1200px;
+    }
+    .col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .col-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .col-text-box {
+      background: #333; /* dark-grey-box color */
+      color: #fff;
+      padding: 1.5rem;
+      flex-grow: 1; /* ensures boxes are same height if content differs */
+    }
+    .col-text-box h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    .col-text-box p {
+      font-size: 1rem;
+      line-height: 1.4;
+    }
 
     /* mobile tweaks */
     @media (max-width: 768px) {
+      .three-col-container { flex-direction: column; }
       .nav-header { padding: 0 .5rem; }
       .nav-btn, .contact-btn { padding: .5rem .75rem; font-size: .9rem; }
       .hero-content h1 { font-size: 2.5rem; }
@@ -162,18 +212,35 @@
       </div>
     </div>
 
-    <div class="content-box grey-box" id="services">
-      <div class="box-content">
-        <div class="text-content">
-          <h2>Our Northstar</h2>
-          <p>Additional Content</p>
+    <div class="box-content">
+        <div class="section-heading">
+          <p>INNOVATIVE PLATFORMS</p>
+          <h2>Explore our AI-driven experiences.</h2>
         </div>
-        <div class="image-content">
-          <img src="placeholder-image.jpg" alt="Placeholder" class="box-image">
+        <div class="three-col-container">
+          <div class="col">
+            <img src="https://placehold.co/600x400/282828/FFF" alt="AIORI Gaming" class="col-image">
+            <div class="col-text-box">
+              <h3>AIORI ></h3>
+              <p>Experience the future of gaming with AIORI, where AI meets multiplayer action.</p>
+            </div>
+          </div>
+          <div class="col">
+            <img src="https://placehold.co/600x400/383838/FFF" alt="AI Developer Hub" class="col-image">
+            <div class="col-text-box">
+              <h3>AI developer hub ></h3>
+              <p>Join the AI Developer Hub and unlock your creative potential.</p>
+            </div>
+          </div>
+          <div class="col">
+            <img src="https://placehold.co/600x400/484848/FFF" alt="Interactive AI Playground" class="col-image">
+            <div class="col-text-box">
+              <h3>Interactive AI playground ></h3>
+              <p>Explore, learn, and play in the Interactive AI Playground.</p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
 
 </body>
 </html>
