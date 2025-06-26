@@ -199,15 +199,26 @@
     }
 
     /* Mobile adjustments */
-    @media (max-width: 768px) {
-      .nav-header {
-        padding: 0.5rem 1rem;
-        gap: 1rem;
-      }
-      
-      .nav-btn, .contact-btn {
-        font-size: 0.9rem;
-      }
+    @media screen and (max-width: 768px) {
+  .hero-section {
+    /* kill whatever background you set up before */
+    background: none !important;
+    position: relative; /* for stacking context */
+  }
+
+  .hero-section::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: auto;
+    min-height: 100vh;           /* always at least a full viewport high */
+    background: url('Thommas_logo.jpg') no-repeat center top;
+    background-size: 100% auto;  /* stretch to 100% of the viewport width */
+    z-index: -1;                 /* sit behind everything */
+  }
+}
+
       
       .hero-section {
         /* Remove fixed attachment on mobile for better performance */
