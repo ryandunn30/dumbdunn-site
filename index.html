@@ -31,18 +31,11 @@
       right: 0;
       padding: 1rem 2rem;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
       z-index: 1000;
       background-color: #000;
       height: 60px;
-    }
-
-    .nav-left {
-      color: white;
-      font-size: 1.2rem;
-      font-weight: bold;
-      letter-spacing: 1px;
     }
 
     .nav-right {
@@ -92,13 +85,24 @@
 
     .hero-image {
       width: 100%;
-      max-width: auto;
+      max-width: none;
       height: auto;
-      margin-top: -80px; /* Pull image up to touch nav banner */
+      margin-top: -80px;
       margin-bottom: 1.5rem;
       border-radius: 0;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       display: block;
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+      .hero-image {
+        margin-top: 0; /* Remove negative margin on mobile */
+      }
+      
+      .main-content {
+        padding-top: 80px; /* Ensure proper spacing on mobile */
+      }
     }
 
     h1 {
@@ -148,7 +152,6 @@
 <body>
   <!-- Navigation Header -->
   <nav class="nav-header">
-    <div class="nav-left">DUNN TECHNOLOGY</div>
     <div class="nav-right">
       <a href="#home" class="nav-btn active">Home</a>
       <a href="#about" class="nav-btn">About</a>
