@@ -6,25 +6,71 @@
   <title>DumbDunn.com</title>
   <style>
     body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(45deg, white 30%, #663399 100%);
-  color: #333;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  text-align: center;
-}
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(45deg, white 30%, #663399 100%);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
 
-       .logo {
-  width: 200px;
-  margin-bottom: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
+    /* Navigation Header */
+    .nav-header {
+      position: fixed;
+      top: 0;
+      right: 0;
+      padding: 1rem 2rem;
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .nav-btn {
+      background: none;
+      border: none;
+      color: #333;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 0.5rem 0;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .nav-btn:hover {
+      color: #663399;
+    }
+
+    .contact-btn {
+      background: none;
+      border: 2px solid #333;
+      color: #333;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border-radius: 4px;
+    }
+
+    .contact-btn:hover {
+      background-color: #333;
+      color: white;
+    }
+
+    .logo {
+      width: 200px;
+      margin-bottom: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
 
     h1 {
       font-size: 3rem;
@@ -52,13 +98,37 @@
     .btn:hover {
       background-color: #005fa3;
     }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .nav-header {
+        padding: 0.5rem 1rem;
+        gap: 1rem;
+      }
+      
+      .nav-btn, .contact-btn {
+        font-size: 0.9rem;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+    }
   </style>
 </head>
 <body>
+  <!-- Navigation Header -->
+  <nav class="nav-header">
+    <a href="#home" class="nav-btn">Home</a>
+    <a href="#about" class="nav-btn">About</a>
+    <a href="#services" class="nav-btn">Services</a>
+    <a href="mailto:rdunn@dumbdunn.com" class="contact-btn">CONTACT</a>
+  </nav>
+
+  <!-- Main Content -->
   <img src="DT_Logo.png" alt="Dunn Technology Logo" class="logo" />
   <h1>DUNN TECHNOLOGY</h1>
   <p>AIORI</p>
   <a class="btn" href="mailto:rdunn@dumbdunn.com">Contact Us</a>
 </body>
-
 </html>
