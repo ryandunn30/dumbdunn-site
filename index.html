@@ -4,176 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>DumbDunn.com</title>
-  <style>
-    /* reset & base */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; }
 
-    /* fixed top nav */
-    .nav-header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 60px;
-      background: #000;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      padding: 0 2rem;
-      z-index: 1000;
-    }
-    .nav-right { display: flex; gap: 2rem; }
-    .nav-btn, .contact-btn {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      padding: 0.5rem 1rem;
-      transition: color 0.3s;
-    }
-    .nav-btn:hover, .contact-btn:hover { color: #ffd700; }
-    .nav-btn.active { color: #ffd700; border-bottom: 2px solid #ffd700; }
-    .contact-btn { border: 2px solid #fff; border-radius: 4px; }
-
-    /* hero with fixed, full-width background */
-    .hero-section {
-      position: relative;
-      height: 50vh;
-      overflow: hidden;
-    }
-    .hero-section::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      min-height: 100vh;
-      background: url('Thommas_logo.jpg') no-repeat center top;
-      background-size: 100% auto;
-      z-index: -1;
-    }
-    .hero-overlay {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.3);
-    }
-    .hero-content {
-      position: relative;
-      top: 50%;
-      transform: translateY(-50%);
-      text-align: center;
-      color: #fff;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-      padding: 0 1rem;
-    }
-    .hero-content h1 { font-size: 3rem; margin-bottom: .5rem; }
-    .hero-content p  { font-size: 1.25rem; margin-bottom: 1.5rem; }
-    .btn {
-      display: inline-block;
-      padding: .75rem 1.5rem;
-      background: #0077cc;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: background .3s;
-    }
-    .btn:hover { background: #005fa3; }
-
-    /* content boxes */
-    .content-sections {
-      padding-top: 60px; /* clear fixed nav */
-      position: relative;
-      z-index: 1;
-    }
-    .content-box {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 4rem 2rem;
-    }
-    .dark-grey-box { background: #333; color: #fff; }
-    .grey-box      { background: #666; color: #fff; }
-    .box-content {
-      display: flex;
-      gap: 3rem;
-      max-width: 1200px;
-      width: 100%;
-      align-items: center;
-      margin: 0 auto; /* <-- Add this line */
-    }
-    .text-content { flex: 1; }
-    .image-content{ flex: 1; }
-    .box-image {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-    }
-/* styles for three-column layout */
-    .grey-box  .box-content { 
-      flex-direction: column;
-    }
-    .section-heading {
-      width: 100%;
-      max-width: 1200px;
-      margin-bottom: 2rem;
-      text-align: left;
-    }
-    .section-heading p {
-      text-transform: uppercase;
-      font-size: 0.9rem;
-      letter-spacing: 1px;
-      margin-bottom: 0.5rem;
-    }
-    .section-heading h2 {
-      font-size: 2.5rem;
-    }
-    .three-col-container {
-      display: flex;
-      gap: 24px; /* This sets the horizontal space between columns */
-      width: 100%;
-      max-width: 1200px;
-    }
-    .col {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    .col-image {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    .col-text-box {
-      background: #333; /* dark-grey-box color */
-      color: #fff;
-      padding: 1.5rem;
-      flex-grow: 1; /* ensures boxes are same height if content differs */
-    }
-    .col-text-box h3 {
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
-    }
-    .col-text-box p {
-      font-size: 1rem;
-      line-height: 1.4;
-    }
-
-    /* mobile tweaks */
-    @media (max-width: 768px) {
-      .three-col-container { flex-direction: column; }
-      .nav-header { padding: 0 .5rem; }
-      .nav-btn, .contact-btn { padding: .5rem .75rem; font-size: .9rem; }
-      .hero-content h1 { font-size: 2.5rem; }
-      .hero-content p  { font-size: 1.1rem; }
-      .content-box { padding: 2rem 1rem; }
-      .box-content{ flex-direction: column; gap: 2rem; }
-      .btn { padding: .5rem 1rem; font-size: .9rem; }
-    }
-    @media (max-width: 480px) {
-      .nav-header { height: 50px; }
-      .hero-content h1 { font-size: 2rem; }
-      .hero-content p  { font-size: 1rem; }
-    }
-  </style>
+  <!-- ✅ Correct CSS link -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
@@ -189,16 +22,13 @@
 
   <!-- hero -->
   <section class="hero-section" id="home">
-    <div class="hero-content">
-      <h1>DUNN TECHNOLOGY</h1>
-      <p>AIORI</p>
-      <a href="mailto:rdunn@dumbdunn.com" class="btn">Contact Us</a>
-    </div>
-  </section>
+  <!-- empty on purpose to show background only -->
+</section>
+
 
   <!-- page content -->
-  <div class="content-sections">
-    <div class="content-box dark-grey-box" id="about">
+  <main>
+    <section id="about" class="content-box dark-grey-box">
       <div class="box-content">
         <div class="text-content">
           <h2>We're not "Really Dumb"</h2>
@@ -210,39 +40,53 @@
           <img src="lightbulb_1X.png" alt="Light Bulb" class="box-image">
         </div>
       </div>
-    </div>
+    </main>
 
-    <div style="height: 3rem;"></div>
-    
-    
+    <div style="height: 0rem;"></div>
+    <!-- Dark background wrapper (full-width) -->
+<div style="background: #1a1919; padding: 2rem 0;"> <!-- darker grey tone -->
+
+  <!-- Centered content inside -->
   <div class="box-content">
-  <div class="three-col-container">
+    <div class="three-col-container">
     
-    <div class="col">
-      <img src="aiori_DK.jpg" alt="AIORI Gaming" class="col-image">
-      <div class="col-text-box">
-        <h3>AIORI CORE ></h3>
-        <p>Test your intuition in the classic AI Turing Test — race to guess if you’re talking with an AI or another player. Will you spot the difference first?</p>
+      <div class="col">
+        <img src="aiori_DK2.jpg" alt="AIORI Gaming" class="col-image">
+        <div class="col-text-box">
+          <h3>AIORI CORE ></h3>
+          <p>Test your intuition in the classic AI Turing Test — race to guess if you’re talking with an AI or another player. Will you spot the difference first?</p>
+        </div>
       </div>
+
+      <div class="col">
+        <img src="puzzle.jpg" alt="AI Developer Hub" class="col-image">
+        <div class="col-text-box">
+          <h3>MULTI-PLAYER ></h3>
+          <p>Logic, Puzzle & Riddle Challenges: Put your brain to the test and beat friends or AI to the answer.</p>
+        </div>
+      </div>
+
+      <div class="col">
+        <img src="nuts.jpg" alt="Interactive AI Playground" class="col-image">
+        <div class="col-text-box">
+          <h3>SUPER-CHARGED CLASSICS ></h3>
+          <p>From timeless party games with an AI twist to new user‑created modes, the fun never ends!</p>
+        </div>
+      </div>
+
     </div>
-    
-    <div class="col">
-      <img src="puzzle.jpg" alt="AI Developer Hub" class="col-image">
-      <div class="col-text-box">
-        <h3>MULTI-PLAYER ></h3>
-        <p>Logic, Puzzle & Riddle Challenges: Put your brain to the test and beat friends or AI to the answer.</p>
-      </div>
-    </div>
-    
-    <div class="col">
-      <img src="nuts.jpg" alt="Interactive AI Playground" class="col-image">
-      <div class="col-text-box">
-        <h3>SUPER-CHARGED CLASSICS ></h3>
-        <p>From timeless party games with an AI twist to new user‑created modes, the fun never ends!</p>
-      </div>
-    </div>   
-  </div> 
+  </div>
+
 </div>
+
+<footer class="dark-grey-box" style="text-align: center; padding: 2rem;">
+  <p style="color: #fff;">&copy; 2025 Dunn Technology. All rights reserved - Patent Pending</p>
+  <a href="https://www.reddit.com/r/AIORI/" target="_blank" style="display: inline-block; margin-top: 1rem;">
+  <img src="reddit_transparent.png" alt="Reddit" style="height: 32px;">
+</a>
+
+</footer>
+
 
 </body>
 </html>
