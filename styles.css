@@ -1,185 +1,594 @@
-/* reset & base */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; background-color: #101010; /* NEW LINE */ }
+:root {
+  /* Color palette */
+  --color-bg:        #f8f6f6;
+  --color-panel:     rgba(15, 8, 20, 0.842);
+  --color-dark:      #000;
+  --color-light:     #e0e0e0;
+  --color-accent:    #e7d910;
+  --color-black:     rgb(252, 227, 3);
+  
+  /* Spacing scale */
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+}
 
-    /* fixed top nav */
-    .nav-header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 60px;
-      background: #000;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      padding: 0 2rem;
-      z-index: 1000;
-    }
-    .nav-right { display: flex; gap: 2rem; }
-    .nav-btn, .contact-btn {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      padding: 0.5rem 1rem;
-      transition: color 0.3s;
-    }
-    .nav-btn:hover, .contact-btn:hover { color: #ffd700; }
-    .nav-btn.active { color: #ffd700; border-bottom: 2px solid #ffd700; }
-    .contact-btn { border: 2px solid #fff; border-radius: 4px; }
+/* RESET & BASE */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'quicksand', sans-serif;
+  color: var(--color-light);
+  background-color: var(--color-bg);
+  overflow-x: hidden;
+}
+main {
+  margin-top: 60px; /* account for fixed nav */
+}
 
-    /* hero with fixed, full-width background */
-    .hero-section {
-      position: relative;
-      height: 50vh;
-      overflow: hidden;
-    }
-    .hero-section::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      min-height: 100vh;
-      background: url('Thommas_logo.jpg') no-repeat center top;
-      background-size: 100% auto;
-      z-index: -1;
-    }
-    .hero-overlay {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.3);
-    }
-    .hero-content {
-      position: relative;
-      top: 50%;
-      transform: translateY(-50%);
-      text-align: center;
-      color: #fff;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-      padding: 0 1rem;
-    }
-    .hero-content h1 { font-size: 3rem; margin-bottom: .5rem; }
-    .hero-content p  { font-size: 1.25rem; margin-bottom: 1.5rem; }
-    .btn {
-      display: inline-block;
-      padding: .75rem 1.5rem;
-      background: #0077cc;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: background .3s;
-    }
-    .btn:hover { background: #005fa3; }
 
-    /* content boxes */
-    .content-sections {
-      padding-top: 60px; /* clear fixed nav */
-      position: relative;
-      z-index: 1;
-    }
-    .content-box {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 4rem 2rem;
-    }
-    .dark-grey-box { background: #333; color: #fff; }
-    .grey-box      { background: #666; color: #fff; }
-    .box-content {
-      display: flex;
-      gap: 3rem;
-      max-width: 1200px;
-      width: 100%;
-      align-items: center;
-      margin: 0 auto; /* <-- Add this line */
-    }
-    .text-content { flex: 1; }
-    .image-content{ flex: 1; }
-    .box-image {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-    }
-/* styles for three-column layout */
-    .grey-box  .box-content { 
-      flex-direction: column;
-    }
-    .section-heading {
-      width: 100%;
-      max-width: 1200px;
-      margin-bottom: 2rem;
-      text-align: left;
-    }
-    .section-heading p {
-      text-transform: uppercase;
-      font-size: 0.9rem;
-      letter-spacing: 1px;
-      margin-bottom: 0.5rem;
-    }
-    .section-heading h2 {
-      font-size: 2.5rem;
-    }
-    .three-col-container {
-      display: flex;
-      gap: 24px; /* This sets the horizontal space between columns */
-      width: 100%;
-      max-width: 1200px;
-    }
-    .col {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    .col-image {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    .col-text-box {
-      background: #333; /* dark-grey-box color */
-      color: #fff;
-      padding: 1.5rem;
-      flex-grow: 1; /* ensures boxes are same height if content differs */
-    }
-    .col-text-box h3 {
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
-    }
-    .col-text-box p {
-      font-size: 1rem;
-      line-height: 1.4;
-    }
+/* UTILITIES */
+.flex-center { display:flex; align-items:center; justify-content:center; gap: var(--space-md); }
+.flex-between{ display:flex; align-items:center; justify-content:space-between; gap: var(--space-md); }
 
-    /* mobile tweaks */
-    @media (max-width: 768px) {
-      .hero-section { height: 25vh; /* reduce height on small screens */}
-      .three-col-container { flex-direction: column; }
-      .nav-right { overflow-x: auto; white-space: nowrap; gap: 1rem; padding: 0.5rem 0; }
-      .nav-header { padding: 0 .5rem; }
-      .btn { padding: .5rem 1rem; font-size: .9rem; }
-      .hero-content h1 { font-size: 2.5rem; }
-      .hero-content p  { font-size: 1.1rem; }
-      .content-box { padding: 2rem 1rem; }
-      .box-content{ flex-direction: column; gap: 2rem; }
-      .btn { padding: .5rem 1rem; font-size: .9rem; }
-      .image-content img { width: 100vw; margin-left: -1rem; margin-right: -1rem; border-radius: 0; }
-    }
-    @media (max-width: 480px) {
-      .hero-section { height: 20vh; /* reduce height on small screens */}
-      .nav-right { overflow-x: auto; white-space: nowrap; gap: 1rem; padding: 0.5rem 0;}
-      .nav-header { height: 50px; }
-      .nav-btn, .contact-btn { padding: 0.5rem 0.5rem; font-size: 0.85rem; }
-      .hero-content h1 { font-size: 2rem; }
-      .hero-content p  { font-size: 1rem; }
-      .content-box { padding: 2rem 1rem; }
-      .box-content{ flex-direction: column; gap: 2rem; }
-      .btn { padding: .5rem 1rem; font-size: .9rem; }
-    }
-    footer img {
-      height: 32px;
-      transition: opacity 0.3s ease;
-    }
+/* NAVIGATION */
+.nav-header {
+  position: fixed; top:0; left:0; right:0;
+  height: 60px;
+  display: flex;
+  background: var(--color-dark);
+  padding: 0 var(--space-md);
+  z-index: 1000;
+}
+.nav-right {
+  display: flex;
+  gap: 2rem(--space-lg);
+  height: 100%;
+  align-items: center;
+  overflow-x: auto;
+}
+.nav-btn,
+.contact-btn {
+  color: var(--color-light);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s;
+}
+.nav-btn.active,
+.nav-btn:hover,
+.contact-btn:hover {
+  color: var(--color-accent);
+}
+.contact-btn {
+  border: 2px solid var(--color-light);
+  border-radius: 0px;
+}
+.nav-btn.active {
+  border-bottom: 2px solid var(--color-accent);
+}
 
-    footer img:hover {
-      opacity: 0.7;
-    }
+
+/* 1) All nav links (including visited) stay light by default */
+.nav-header .nav-btn,
+.nav-header .nav-btn:visited,
+.nav-header .contact-btn,
+.nav-header .contact-btn:visited {
+  color: var(--color-light);
+}
+
+/* 2) Highlight any .active link */
+.nav-header .nav-btn.active,
+.nav-header .contact-btn.active,
+.nav-header .nav-btn.active:visited,
+.nav-header .contact-btn.active:visited {
+  color: var(--color-accent);
+}
+
+/* 3) Hover/focus states */
+.nav-header .nav-btn:hover,
+.nav-header .nav-btn:focus,
+.nav-header .contact-btn:hover,
+.nav-header .contact-btn:focus {
+  color: var(--color-accent);
+}
+
+/* HERO SECTION */
+.hero-section {
+  background: url('images/clouds.webp') center center no-repeat;
+  background-size: cover;
+  /* give it some height so it actually shows: */
+  height: 100%;       /* or whatever you like */
+  height: 70vh;
+  padding-bottom: 4rem;   /* space under the hero */
+}
+.hero-section::before {
+  content: '';
+  position: absolute; inset:0;
+  background: linear-gradient(
+    to bottom,
+    rgba(240, 238, 241, 0),
+    rgba(113, 66, 161, 0.39)
+  );
+}
+.hero-content {
+  position: absolute;
+  top:50%; left:50%; transform: translate(-50%, -50%);
+  text-align: center;
+  color: var(--color-light);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  padding: 0 var(--space-sm);
+}
+.hero-overlay {
+  position: absolute;      /* remove from normal flow */
+  top: 10%;                
+  left: 50%;               
+  transform: translate(-50%, -70%);  /* center both axes */
+  width: 80vw;            /* ← allow it to span 80% of the viewport width */
+  text-align: center;      
+  z-index: 1;              /* above the background image */
+}
+
+.overlay-icon {
+  display: block;
+  margin: 0 auto;          /* center within the overlay */
+  max-width: 700px;        /* adjust size as needed */
+  height: auto;
+}
+
+.hero-overlay h1 {
+  margin-top: 0.5rem;      
+  color: #fff;             /* or whatever contrasts */
+  text-shadow: 0 2px 4px rgba(0,0,0,0.6); /* optional for readability */
+}
+.hero-content h1 { font-size: 3rem; margin-bottom: var(--space-sm); }
+.hero-content p  { font-size: 1.25rem; margin-bottom: var(--space-lg); }
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: #0077cc;
+  color: var(--color-light);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+.btn:hover { background: #005fa3; }
+
+/* HERO TEXT */
+.hero-section .text-content h1 {
+  margin-bottom: 2rem;    /* extra space after your heading */
+}
+
+/* MAIN CONTENT BOX */
+.content-box {
+  margin-top: 0rem;       /* push the box down a bit */
+  flex: 1;   
+  align-items: left;
+  object-fit: cover; /* maintain aspect ratio */
+  justify-content: flex-start;
+  margin-right: var(--space-lg);
+  padding: var(--space-md) var(--space-sm);
+}
+
+/* 0) Base layout for all panels */
+.content-box {
+  display: flex;
+  gap: var(--space-lg);
+  width: 100%;
+
+  /* layout‐only: no background here */
+  border-radius: 0;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  backdrop-filter: blur(5px);
+  background: none;
+}
+
+/* 1) Top “dark” box stays special */
+.unused {
+  /* keep your old full-width + padding */
+  width: 100%;
+  padding: var(--space-md) var(--space-lg);
+  margin-right: 100%;
+  background: var(--color-panel);
+  color: var(--color-light);
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(165, 6, 6, 0.507);
+  backdrop-filter: blur(5px);
+}
+
+/* 2) Inner centering (shared) */
+.founder- {
+  width: auto;
+  max-width: 1500px;
+  margin-right: auto;
+  display: flex;           /* if you still want it to grow */
+  gap: var(--space-lg);
+}
+.founder-image { margin-right: …; 
+  /* adjust as needed */
+  width: auto; 
+  max-width: 1500px; /* or whatever fits */
+  border-radius: 0px;
+  margin-right: var(--space-lg);
+
+}
+
+.box-content {
+  width: auto;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: var(--space-lg);
+  gap: var(--space-lg);
+}
+.content-box__inner {
+  max-width: 1100px;
+  margin: -2 auto;
+  display: flex;
+  align-items: justify;
+  gap: var(--space-lg);
+  margin-right: var(--space-lg);
+  
+}
+.passion  {
+  width: 100%;
+  padding: 2rem;
+  background: var(--color-panel);
+  color: var(--color-light);
+  box-shadow: 0 8px 16px rgba(12, 12, 12, 0.507);
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  text-align: center;
+  gap: 0rem;
+}
+
+.black-box {
+  width: 100%;
+  padding: 2rem;
+  background: var(--color-panel);
+  color: rgb(5, 5, 5);
+  box-shadow: 0 8px 16px rgb(8, 8, 8);
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  text-align: center;
+  gap: 0rem;
+  border-radius: 8px;
+}
+
+/* 3) Per-section backgrounds */
+.content-box--about {
+  /* About Dunn Technology section */
+  background: #3405df;
+}
+
+.color-box--aiori {
+  /* AIORI feature section */
+  background: #ffffff;
+  padding: 0;
+  margin-right: var(--space-lg);
+  flex: 1;  
+  justify-content: flex-start;
+}
+
+.content-box--extra {
+  /* Any future panel */
+  background: #020007;
+}
+
+/* 1) Remove the generic padding on this one panel */
+.content-box.color-box--aiori {
+  /* if your .content-box rule was adding padding, override it here: */
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* 2) On that AIORI panel, pack everything to the left */
+.content-box.color-box--aiori .content-box__inner {
+  max-width: 500px;
+  margin: 0;
+  padding: 0;
+  gap: 0;               /* no gap between items */
+  display: flex;
+  align-items: stretch; /* stretch children to full height */
+  justify-content: flex-start;
+}
+
+/* 3) Make sure the image doesn’t stretch or grow */
+.content-box.color-box--aiori .founder-image {
+ display: block;       /* kill inline whitespace */
+  margin: 0;            /* no stray margins */
+  width: 40%;          /* full width of its flex‐cell */
+  height: 100%;         /* full height of its flex‐cell */
+  object-fit: cover;    /* scales/crops to fill */
+}
+
+.text-content{
+max-width: 100%;        /* fills the .hero-overlay’s width */
+  margin: 0 auto;         /* center if you ever change to a smaller width */
+}
+
+.text-content h1 {
+  line-height: 1.3;       /* a little breathing room between lines */
+}
+
+/* Make the image container the positioning context */
+.color-box--aiori .image-wrapper {
+  position: relative;
+  width: auto;
+  overflow: hidden;
+}
+
+/* Your full-width image */
+.color-box--aiori .image-wrapper {
+  display: flex;
+  align-items: none;    /* force img & text to match height */
+  width: 100%;
+  height: 100%; 
+  overflow: hidden;
+}
+
+.color-box--aiori .founder-image {
+  flex: none;              /* don’t let the img grow beyond its aspect */
+  width: 300px;
+  height: 100%;            /* fill the wrapper’s height */
+  object-fit: cover;       /* crop to fill */
+  object-position: left center;  /* always show the left “diagram” side */
+  display: block;
+}
+
+.color-box--aiori .text-overlay {
+  flex: 1;                 /* takes up whatever’s left over */
+  background: rgba(15,8,20,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+  text-align: center;
+  min-width: auto;
+}
+
+/* Let the AIORI panel’s inner wrapper fill 100% */
+.content-box.color-box--aiori .content-box__inner {
+  max-width: none;      /* remove the 1100px cap */
+  width: 100%;          /* span the full panel width */
+  margin: 0;            /* no auto-centering */
+  padding: 0;           /* kill any leftover padding */
+}
+
+/* Tweak your heading text color/size inside the overlay */
+.color-box--aiori .text-overlay h2 {
+  color: var(--color-light);
+  font-size: 2rem;
+  line-height: 1.4;
+}
+
+.aiori-text {
+  color: var(--color-accent);
+  flex:1;
+  min-width: 400px;
+  line-height:1.6;
+  font-size:1.1rem;
+  text-align: justify;
+}
+.image-content,
+.top-image-content {
+  flex:1;
+  display:flex;
+  justify-content:center;
+  margin: 0;          /* clear any extra spacing */
+}
+.box-img,
+.box-image,
+.col-image {
+  width:100%; max-width:700px; min-width:250px;
+  border-radius:0px;
+  object-fit:cover;
+  display:block;
+}
+.top-box-image {
+  width: 100vw;       /* full viewport width */
+  height: auto;       /* preserve aspect ratio */
+  border-radius:0px;
+  object-fit:cover;
+  display:block;
+}
+.aiori-logo {
+  max-width: 900px;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* THREE-COLUMN */
+.three-col-container {
+  display:flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+.col { flex:1; display:flex; flex-direction:column; }
+.col-text-box {
+  background:#333;
+  color: var(--color-light);
+  padding: var(--space-md);
+  flex-grow:1;
+}
+.col-text-box h3 { font-size:1.25rem; margin-bottom:0.5rem; }
+.col-text-box p  { font-size:1rem; line-height:1.4; }
+
+/* ABOUT PAGE HERO OVERRIDE */
+.about-page .hero-section {
+  height:40vh;
+  background: url('images/clouds.webp') no-repeat center/cover fixed;
+}
+.about-page .hero-section::before {
+  content:''; position:absolute; inset:0;
+  background:rgba(216, 216, 216, 0.2);
+}
+
+/* FOOTER */
+.footer {
+  background-color: #2a2a2a;          /* a different dark/grey for your footer */
+  color: var(--color-light);
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.footer .footer-icon {
+  width: 32px;
+  height: auto;
+  display: block;
+  margin: 0 auto 0.5em;
+}
+
+.footer-text {
+  margin: 0 0 1em;
+}
+
+/* ICON */
+.footer-icon {
+  width: 32px;         /* force the width */
+  height: auto;        /* maintain aspect ratio */
+  min-width: 70px;     /* override any generic max-width */
+  display: block;      /* allow margin auto to work */
+  margin: 0 auto 0.5em;/* center horizontally & add some bottom spacing */
+}
+
+/* TEXT */
+.footer-text {
+  display: block;      /* ensure it’s on its own line */
+  text-align: center;  /* center the text itself */
+  margin: 0;           /* reset default margins if any */
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  /* tighten up nav on mobiles */
+  .nav-header { padding: 0 var(--space-sm); }
+
+  /* panels get 1rem side-padding instead of 4rem */
+  .dark-top-box,
+  .content-box .footer.dark-grey-box{
+    padding: var(--space-md) var(--space-sm);
+  }
+  /* stack flex children vertically */
+  .dark-top-box .box-content,
+  .content-box .box-content {
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  /* hero text also gets 1rem side-padding */
+  .hero-content {
+    padding: 0 var(--space-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .footer.dark-grey-box
+  .hero-section { height: 15vh; }
+  .nav-header   { height: 40px; }
+  .hero-content h1 { font-size: 2rem; }
+  .hero-content p  { font-size: 1rem; }
+}
+
+ /* Hybrid 2: Multiple Animated Lines */
+        .h2-section {
+            background: linear-gradient(135deg, #663399 0%, rgba(28, 21, 34, 0.95) 100%);
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .h2-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 70%, rgba(255,215,0,0.1) 0%, transparent 50%);
+            animation: float 12s ease-in-out infinite;
+        }
+        .h2-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        .h2-accent-lines {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .h2-line {
+            width: 80px;
+            height: 3px;
+            margin: 6px 0;
+            animation: slide-in 2s ease-out infinite;
+        }
+        .h2-line:nth-child(1) {
+            background: linear-gradient(90deg, #ffd700, transparent);
+            animation-delay: 0s;
+        }
+        .h2-line:nth-child(2) {
+            background: linear-gradient(90deg, #ff6b6b, transparent);
+            animation-delay: 0.3s;
+        }
+        .h2-line:nth-child(3) {
+            background: linear-gradient(90deg, #4ecdc4, transparent);
+            animation-delay: 0.6s;
+        }
+        .h2-content h2 {
+            font-size: 4rem;
+            margin: 0;
+            padding-left: 110px;
+            font-weight: 300;
+        }
+        .h2-content h2 strong {
+            color: #ffd700;
+            font-weight: 700;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        @keyframes slide-in {
+            0% { width: 0; opacity: 0; }
+            50% { width: 80px; opacity: 1; }
+            100% { width: 0; opacity: 0; }
+        }
+
+.image-container {
+  position: relative;
+  display: inline-block; /* Keeps container sized to image */
+}
+
+.image-container img {
+  display: block;
+  width: 100%; /* Responsive image */
+  height: auto;
+}
+.overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centers text */
+  color: rgb(255, 255, 255);
+  font-size: 1rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.6); /* Optional for readability */
+  padding: 1rem;
+  text-align: justify;
+}
+
+@font-face {
+  font-family: 'quicksand';
+  src: url('fonts/quicksand.ttf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
