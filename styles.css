@@ -105,6 +105,16 @@ main {
   height: 70vh;
   padding-bottom: 4rem;   /* space under the hero */
 }
+
+.about-section {
+  background: url('images/index_bg2.jpg') center center no-repeat;
+  background-size: cover;
+  /* give it some height so it actually shows: */
+  height: 100%;       /* or whatever you like */
+  max-height: 500vh;
+  min-height: 60vh;
+  padding-bottom: 20rem;   /* space under the hero */
+}
 .hero-section::before {
   content: '';
   position: absolute; inset:0;
@@ -116,11 +126,21 @@ main {
 }
 .hero-content {
   position: absolute;
-  top:50%; left:50%; transform: translate(-50%, -50%);
+  top:50%; left:50%; transform: translate(-30%, -30%);
   text-align: center;
   color: var(--color-light);
   text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
   padding: 0 var(--space-sm);
+}
+
+.about-content {
+  position: absolute;
+  top: 50%; left:60%; transform: translate(-50%, -50%);
+  text-align: center;
+  color: var(--color-light);
+  text-shadow: 0px 0px 0px rgba(0,0,0,0.5);
+  padding: 1010 var(--space-sm);
+
 }
 .hero-overlay {
   position: absolute;      /* remove from normal flow */
@@ -131,6 +151,17 @@ main {
   text-align: center;      
   z-index: 1;              /* above the background image */
 }
+.about-overlay {
+  position: absolute;      /* remove from normal flow */
+  top: 90%;                
+  left: 40%;               
+  transform: translate(-50%, -70%);  /* center both axes */
+  width: 0vw;            /* ← allow it to span 80% of the viewport width */
+  /* width: 100%; */       /* or whatever fits your design */ 
+  text-align: center;      
+  z-index: 1;              /* above the background image */
+}
+
 
 .overlay-icon {
   display: block;
@@ -162,6 +193,19 @@ main {
   margin-bottom: 2rem;    /* extra space after your heading */
 }
 
+/* Overrides only the About‐page hero */
+.about-page {
+  background-size: cover;
+  /* give it some height so it actually shows: */
+  height: 100%;       /* or whatever you like */
+  position: absolute;
+
+
+}
+
+
+<br>
+
 /* MAIN CONTENT BOX */
 .content-box {
   margin-top: 0rem;       /* push the box down a bit */
@@ -181,7 +225,7 @@ main {
 
   /* layout‐only: no background here */
   border-radius: 0;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 16px rgb(0, 0, 0);
   backdrop-filter: blur(5px);
   background: none;
 }
@@ -212,8 +256,8 @@ main {
   width: auto; 
   max-width: 1500px; /* or whatever fits */
   border-radius: 0px;
-  margin-right: var(--space-lg);
-
+  margin-right: auto;
+  gap: var(--space-lg);
 }
 
 .box-content {
@@ -233,9 +277,10 @@ main {
   margin-right: var(--space-lg);
   
 }
-.passion  {
+
+.about-box  {
   width: 100%;
-  padding: 2rem;
+  padding: 10rem;
   background: var(--color-panel);
   color: var(--color-light);
   box-shadow: 0 8px 16px rgba(12, 12, 12, 0.507);
@@ -246,18 +291,31 @@ main {
   gap: 0rem;
 }
 
-.black-box {
+.passion  {
   width: 100%;
   padding: 2rem;
   background: var(--color-panel);
-  color: rgb(5, 5, 5);
+  color: var(--color-light);
+  box-shadow: 10PX 8px 16px rgba(12, 12, 12, 0.705);
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  text-align: center;
+  gap: 0rem;
+}
+
+.black-box {
+  width: 100%;
+  padding: 2rem;
+
+  color: rgb(233, 10, 10);
   box-shadow: 0 8px 16px rgb(8, 8, 8);
   max-width: 100%;
   margin: 0 auto;
   display: flex;
   text-align: center;
   gap: 0rem;
-  border-radius: 8px;
+  border-radius: 0px;
 }
 
 /* 3) Per-section backgrounds */
@@ -302,7 +360,7 @@ main {
 .content-box.color-box--aiori .founder-image {
  display: block;       /* kill inline whitespace */
   margin: 0;            /* no stray margins */
-  width: 40%;          /* full width of its flex‐cell */
+  width: 14%;          /* full width of its flex‐cell */
   height: 100%;         /* full height of its flex‐cell */
   object-fit: cover;    /* scales/crops to fill */
 }
@@ -327,18 +385,19 @@ max-width: 100%;        /* fills the .hero-overlay’s width */
 .color-box--aiori .image-wrapper {
   display: flex;
   align-items: none;    /* force img & text to match height */
-  width: 100%;
-  height: 100%; 
+  width: auto;
+  height: auto; 
   overflow: hidden;
 }
 
 .color-box--aiori .founder-image {
-  flex: none;              /* don’t let the img grow beyond its aspect */
-  width: 300px;
-  height: 100%;            /* fill the wrapper’s height */
-  object-fit: cover;       /* crop to fill */
+  display: flex;
+  align-items: none;    /* force img & text to match height */
+
+  width: auto;
+  height: auto;            /* fill the wrapper’s height */
+overflow: hidden;
   object-position: left center;  /* always show the left “diagram” side */
-  display: block;
 }
 
 .color-box--aiori .text-overlay {
@@ -377,6 +436,10 @@ max-width: 100%;        /* fills the .hero-overlay’s width */
 }
 .image-content,
 .top-image-content {
+  width: 100%;
+  height: 100%;
+  max-width: 700px;  
+  max-height: none;  
   flex:1;
   display:flex;
   justify-content:center;
@@ -421,11 +484,13 @@ max-width: 100%;        /* fills the .hero-overlay’s width */
 .col-text-box p  { font-size:1rem; line-height:1.4; }
 
 /* ABOUT PAGE HERO OVERRIDE */
-.about-page .hero-section {
+.about-page .about-section {
   height:40vh;
-  background: url('images/clouds.webp') no-repeat center/cover fixed;
+  background: url('images/index_bg2.jpg') no-repeat center/cover fixed;
 }
-.about-page .hero-section::before {
+
+
+.about-page .about-section::before {
   content:''; position:absolute; inset:0;
   background:rgba(216, 216, 216, 0.2);
 }
