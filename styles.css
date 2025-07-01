@@ -3,7 +3,7 @@
   --color-bg:        #f8f6f6;
   --color-panel:     rgba(15, 8, 20, 0.842);
   --color-dark:      #000;
-  --color-light:     #e0e0e0;
+  --color-light:     #ffffff;
   --color-accent:    #e7d910;
   --color-black:     rgb(252, 227, 3);
   
@@ -111,9 +111,9 @@ main {
   background-size: cover;
   /* give it some height so it actually shows: */
   height: 100%;       /* or whatever you like */
-  max-height: 500vh;
+  max-height: 800vh;
   min-height: 60vh;
-  padding-bottom: 20rem;   /* space under the hero */
+  padding-bottom: 0   /* space under the hero */
 }
 .hero-section::before {
   content: '';
@@ -139,7 +139,7 @@ main {
   text-align: center;
   color: var(--color-light);
   text-shadow: 0px 0px 0px rgba(0,0,0,0.5);
-  padding: 1010 var(--space-sm);
+  padding: 0var(--space-sm);
 
 }
 .hero-overlay {
@@ -175,7 +175,7 @@ main {
   color: #fff;             /* or whatever contrasts */
   text-shadow: 0 2px 4px rgba(0,0,0,0.6); /* optional for readability */
 }
-.hero-content h1 { font-size: 3rem; margin-bottom: var(--space-sm); }
+.hero-content h1 { font-size: 5rem; margin-bottom: var(--space-sm); }
 .hero-content p  { font-size: 1.25rem; margin-bottom: var(--space-lg); }
 .btn {
   display: inline-block;
@@ -203,8 +203,9 @@ main {
 
 }
 
-
-<br>
+.spacer {
+  height: 100px;        /* whatever default height you like */
+}
 
 /* MAIN CONTENT BOX */
 .content-box {
@@ -280,7 +281,7 @@ main {
 
 .about-box  {
   width: 100%;
-  padding: 10rem;
+  padding: none;
   background: var(--color-panel);
   color: var(--color-light);
   box-shadow: 0 8px 16px rgba(12, 12, 12, 0.507);
@@ -293,10 +294,10 @@ main {
 
 .passion  {
   width: 100%;
-  padding: 2rem;
+  padding: 5rem;
   background: var(--color-panel);
   color: var(--color-light);
-  box-shadow: 10PX 8px 16px rgba(12, 12, 12, 0.705);
+  box-shadow: 0PX 8px 16px rgba(12, 12, 12, 0.705);
   max-width: 100%;
   margin: 0 auto;
   display: flex;
@@ -377,8 +378,12 @@ max-width: 100%;        /* fills the .hero-overlay’s width */
 /* Make the image container the positioning context */
 .color-box--aiori .image-wrapper {
   position: relative;
-  width: auto;
+  align-items: none;    /* force img & text to match height */
+
   overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+
 }
 
 /* Your full-width image */
@@ -387,7 +392,8 @@ max-width: 100%;        /* fills the .hero-overlay’s width */
   align-items: none;    /* force img & text to match height */
   width: auto;
   height: auto; 
-  overflow: hidden;
+
+  margin: 0 auto; /* center the image wrapper */
 }
 
 .color-box--aiori .founder-image {
@@ -485,7 +491,7 @@ overflow: hidden;
 
 /* ABOUT PAGE HERO OVERRIDE */
 .about-page .about-section {
-  height:40vh;
+  height:80vh;
   background: url('images/index_bg2.jpg') no-repeat center/cover fixed;
 }
 
