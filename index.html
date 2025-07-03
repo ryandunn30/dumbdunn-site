@@ -6,7 +6,11 @@
   <title>DumbDunn.com</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="index-page">
+body {
+  /* remove any background-image here */
+  background: none;
+}
+
   <!-- NAV -->
   <nav class="nav-header">
     <div class="nav-right">
@@ -19,14 +23,23 @@
 <br>
 
    <!-- HERO -->
+
+
+
+
 <section id="about-page" class="hero-section">
-  <div class="hero-content">
-    <div class="hero-overlay">
-      <img src="images/logo_wt_tr_4267.png" alt="Overlay graphic" class="overlay-icon"/>
+  <div class="hero-overlay">
+    <img src="images/logo_wt_tr_4267.png" alt="Dunn logo" class="overlay-icon"  />
   </div>
 </section>
 
+
+
 <main>
+<main class="page-content">
+  <!-- your floating-boxes live here -->
+
+
 <section class="passion">
   <div class="box-content">
         <h1>We’re passionate about building things that people love to play!</h1>
@@ -39,18 +52,16 @@
 
 
 
-<section class="content-box color-box--aiori">
-  <div class="content-box__inner">
-    <div class="image-wrapper">
-      <img src="images/AI_image.jpg" alt="AI map" class="founder-image" />
-      <div class="text-overlay">
-        <h2>
+<section class="floating-box image-text">
+  <div class="box-image">
+      <img src="images/AI_image.jpg" alt="AI map" class="AI icon" />
+  </div>
+       <div class="box-text">
+        <h1>
           Founded by innovators in AI and interactive experiences, We build cutting-edge platforms like AIORI that blend
           fun and functionality.
-        </h2>
+        </h1>
       </div>
-    </div>
-  </div>
 </section>
 
 
@@ -60,17 +71,15 @@
 
 
     <!-- AIORI FEATURE -->
-<section class="content-box color-box--aiori">
-  <div class="content-box__inner">
-      <<div class="text-overlay">
-        <h2>Our flagship product, <strong>AIORI</strong>, is a multiplayer gaming platform that challenges gamers and 
-          AI-enthusiasts. Designed as the ultimate Turing Test, AIORI merges entertainment and intelligence.</h2>
-      </div>
-      <div class="image-wrapper">
+<section class="floating-box text-image">
+  <div class="box-text">
+    <h1>Our flagship product, AIORI, is a multiplayer gaming platform that challenges gamers and AI-enthusiasts. Designed as the ultimate Turing Test, AIORI merges entertainment and intelligence.</h1>
+  </div>
+  <div class="box-image">
         <img src="images/Thommas_logo.jpg" alt="AIORI Logo" class="image-content">
-      </div>
-      </div>
-    </section>
+  </div>
+</section>
+
 
 <div class="spacer"></div>  <!-- blank space -->
 

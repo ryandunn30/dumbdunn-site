@@ -97,21 +97,23 @@ main {
 }
 
 /* HERO SECTION */
+
+
+
 .hero-section {
-  background: url('images/clouds.webp') center center no-repeat;
-  background-size: cover;
-  /* give it some height so it actually shows: */
-  height: 100%;       /* or whatever you like */
-  height: 70vh;
-  padding-bottom: 4rem;   /* space under the hero */
+  position: relative;
+  height: 700px;  /* or whatever you’d like */
+  background: url('images/clouds.webp') no-repeat center/cover;
 }
+
+
 
 .about-section {
   background: url('images/index_bg2.jpg') center center no-repeat;
   background-size: cover;
   /* give it some height so it actually shows: */
   height: 100%;       /* or whatever you like */
-  max-height: 800vh;
+  max-height: 1000vh;
   min-height: 60vh;
   padding-bottom: 0   /* space under the hero */
 }
@@ -135,7 +137,7 @@ main {
 
 .about-content {
   position: absolute;
-  top: 50%; left:60%; transform: translate(-50%, -50%);
+  top: 80%; left:60%; transform: translate(-50%, -50%);
   text-align: center;
   color: var(--color-light);
   text-shadow: 0px 0px 0px rgba(0,0,0,0.5);
@@ -143,31 +145,35 @@ main {
 
 }
 .hero-overlay {
-  position: absolute;      /* remove from normal flow */
-  top: 10%;                
-  left: 50%;               
-  transform: translate(-50%, -70%);  /* center both axes */
-  width: 80vw;            /* ← allow it to span 80% of the viewport width */
-  text-align: center;      
-  z-index: 1;              /* above the background image */
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 1;
 }
 .about-overlay {
   position: absolute;      /* remove from normal flow */
-  top: 90%;                
+  top: 100%;                
   left: 40%;               
-  transform: translate(-50%, -70%);  /* center both axes */
-  width: 0vw;            /* ← allow it to span 80% of the viewport width */
+  transform: translate(-50%, -50%);  /* center both axes */
+  width: 90vw;            /* ← allow it to span 80% of the viewport width */
+  min-width: 400vw;
   /* width: 100%; */       /* or whatever fits your design */ 
   text-align: center;      
   z-index: 1;              /* above the background image */
 }
-
+.hero-smoke {
+  position: relative;
+  height: 400px;
+  background: url('images/clouds.webp') no-repeat center/cover;
+}
 
 .overlay-icon {
-  display: block;
-  margin: 0 auto;          /* center within the overlay */
-  max-width: 700px;        /* adjust size as needed */
+  width: 80%;       /* fluid */
+  max-width: 700px;
   height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 .hero-overlay h1 {
@@ -190,18 +196,25 @@ main {
 
 /* HERO TEXT */
 .hero-section .text-content h1 {
-  margin-bottom: 2rem;    /* extra space after your heading */
+  margin-bottom: 50rem;    /* extra space after your heading */
 }
 
 /* Overrides only the About‐page hero */
 .about-page {
   background-size: cover;
   /* give it some height so it actually shows: */
-  height: 100%;       /* or whatever you like */
+  height: 800vw;       /* or whatever you like */
   position: absolute;
 
 
 }
+.page-content {
+  background: #fff;
+  position: relative;  /* so it sits on top of .hero-section if z-index used */
+  z-index: 1;
+  padding: 0rem 1rem;  /* whatever spacing you like */
+}
+
 
 .spacer {
   height: 100px;        /* whatever default height you like */
@@ -243,6 +256,56 @@ main {
   box-shadow: 0 8px 16px rgba(165, 6, 6, 0.507);
   backdrop-filter: blur(5px);
 }
+
+
+.floating-box {
+  display: flex;
+  max-width: 1200px;      /* adjust to taste */
+  min-height: 300px;
+  margin: 3rem auto;      /* center + vertical spacing */
+  background: var(--color-panel);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* default flex: row (image then text) */
+.floating-box.image-text { flex-direction: row; }
+
+/* reverse flex: text then image */
+.floating-box.text-image { flex-direction: row-reverse; }
+
+
+.box-image {
+  flex: 0 0 50%;            /* exactly half the box */
+  display: flex;
+  align-items: center;      /* center vertically */
+  justify-content: center;  /* center horizontally */
+  overflow: hidden;
+  background: #fff;         /* solid so no bleed */
+}
+.box-text {
+  flex: 1 1 50%;          /* each takes half */
+}
+
+/* make sure images fill their container */
+.box-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        /* or `contain` if you never want cropping */
+}
+
+/* pad your text nicely */
+.box-text {
+  display: flex;
+  align-items: center;    /* vertical centering */
+  padding: 2rem;
+  color: var(--color-light);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  justify-content: center;  /* horizontal centering */
+}
+
 
 /* 2) Inner centering (shared) */
 .founder- {
@@ -452,7 +515,7 @@ overflow: hidden;
   margin: 0;          /* clear any extra spacing */
 }
 .box-img,
-.box-image,
+
 .col-image {
   width:100%; max-width:700px; min-width:250px;
   border-radius:0px;
