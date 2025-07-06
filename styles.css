@@ -107,16 +107,15 @@ main {
 }
 
 
-
-.about-section {
-  background: url('images/index_bg2.jpg') center center no-repeat;
-  background-size: cover;
-  /* give it some height so it actually shows: */
-  height: 100%;       /* or whatever you like */
-  max-height: 1000vh;
-  min-height: 60vh;
-  padding-bottom: 0   /* space under the hero */
+html, body {
+  width: 100%;
+  overflow-x: hidden;
 }
+
+
+
+
+
 .hero-section::before {
   content: '';
   position: absolute; inset:0;
@@ -135,15 +134,9 @@ main {
   padding: 0 var(--space-sm);
 }
 
-.about-content {
-  position: absolute;
-  top: 80%; left:60%; transform: translate(-50%, -50%);
-  text-align: center;
-  color: var(--color-light);
-  text-shadow: 0px 0px 0px rgba(0,0,0,0.5);
-  padding: 0var(--space-sm);
 
-}
+
+
 .hero-overlay {
   position: absolute;
   top: 50%; left: 50%;
@@ -151,17 +144,7 @@ main {
   text-align: center;
   z-index: 1;
 }
-.about-overlay {
-  position: absolute;      /* remove from normal flow */
-  top: 100%;                
-  left: 40%;               
-  transform: translate(-50%, -50%);  /* center both axes */
-  width: 90vw;            /* ← allow it to span 80% of the viewport width */
-  min-width: 400vw;
-  /* width: 100%; */       /* or whatever fits your design */ 
-  text-align: center;      
-  z-index: 1;              /* above the background image */
-}
+
 .hero-smoke {
   position: relative;
   height: 400px;
@@ -171,10 +154,84 @@ main {
 .overlay-icon {
   width: 80%;       /* fluid */
   max-width: 700px;
-  height: auto;
+  height: 100%;
   display: block;
   margin: 0 auto;
 }
+
+
+/* About Area */
+/* Overrides only the About‐page hero */
+
+/* 3) Per-section backgrounds */
+.content-box--about {
+  /* About Dunn Technology section */
+  background: #3405df;
+}
+
+/* ABOUT PAGE HERO OVERRIDE */
+
+
+.about-section {
+  background-color: #fff;  /* White background */
+  height: auto;  /* Adjust height to the image's size */
+  width: 100%;
+  position: relative;  /* Set the section as a positioning context */
+  margin-top: 0;  /* Remove any space between the header and the image */
+  padding-top: 0;  /* Remove any padding from the top */
+}
+
+.about-page {
+  background-color: var(--color-bg); /* fallback color */
+}
+
+.about-content {
+
+  top:50%; left:50%; transform: translate(-30%, -30%);
+  text-align: center;
+  color: var(--color-light);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  padding: 0 var(--space-sm);
+}
+
+.about-overlay {
+  position: absolute;
+  top: 50%;  /* Center the image vertically */
+  left: 50%;  /* Center the image horizontally */
+  transform: translate(-50%, -50%);  /* Adjust to the center */
+  width: 100%;  /* Make the image span across the full width */
+  max-width: 90%;  /* Limit the image width to avoid stretching too much */
+}
+
+.about-icon {
+  width: 100%;  /* Make image stretch the full width */
+  height: auto;  /* Maintain aspect ratio */
+  display: block;  /* Remove any space below the image */
+}
+
+.about-box  {
+  width: 100%;
+  padding: none;
+  background: var(--color-panel);
+  color: var(--color-light);
+  box-shadow: 0 8px 16px rgba(12, 12, 12, 0.507);
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  text-align: center;
+  gap: 0rem;
+}
+.about-page .about-section {
+  height:100vh;
+  background-color: #2a2a2a;  
+}
+
+
+.about-page .about-section::before {
+  content:''; position:absolute; inset:0;
+  background:rgba(216, 216, 216, 0.2);
+}
+
 
 .hero-overlay h1 {
   margin-top: 0.5rem;      
@@ -199,15 +256,8 @@ main {
   margin-bottom: 50rem;    /* extra space after your heading */
 }
 
-/* Overrides only the About‐page hero */
-.about-page {
-  background-size: cover;
-  /* give it some height so it actually shows: */
-  height: 800vw;       /* or whatever you like */
-  position: absolute;
 
 
-}
 .page-content {
   background: #fff;
   position: relative;  /* so it sits on top of .hero-section if z-index used */
@@ -342,18 +392,7 @@ main {
   
 }
 
-.about-box  {
-  width: 100%;
-  padding: none;
-  background: var(--color-panel);
-  color: var(--color-light);
-  box-shadow: 0 8px 16px rgba(12, 12, 12, 0.507);
-  max-width: 100%;
-  margin: 0 auto;
-  display: flex;
-  text-align: center;
-  gap: 0rem;
-}
+
 
 .passion  {
   width: 100%;
@@ -382,11 +421,7 @@ main {
   border-radius: 0px;
 }
 
-/* 3) Per-section backgrounds */
-.content-box--about {
-  /* About Dunn Technology section */
-  background: #3405df;
-}
+
 
 .color-box--aiori {
   /* AIORI feature section */
@@ -552,17 +587,7 @@ overflow: hidden;
 .col-text-box h3 { font-size:1.25rem; margin-bottom:0.5rem; }
 .col-text-box p  { font-size:1rem; line-height:1.4; }
 
-/* ABOUT PAGE HERO OVERRIDE */
-.about-page .about-section {
-  height:80vh;
-  background: url('images/index_bg2.jpg') no-repeat center/cover fixed;
-}
 
-
-.about-page .about-section::before {
-  content:''; position:absolute; inset:0;
-  background:rgba(216, 216, 216, 0.2);
-}
 
 /* FOOTER */
 .footer {
@@ -619,6 +644,11 @@ overflow: hidden;
   /* hero text also gets 1rem side-padding */
   .hero-content {
     padding: 0 var(--space-sm);
+  }
+
+  .overlay-icon {
+    height: 50vh;  /* Limit the height on smaller screens */
+    object-position: center center;  /* Keep the image centered */
   }
 }
 
